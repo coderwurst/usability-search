@@ -1,4 +1,5 @@
 import React from 'react';
+import AlgoliaPlaces from 'algolia-places-react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -38,7 +39,22 @@ function App() {
         className={classes.textField}
         margin="normal"
       />
-      
+
+
+      <AlgoliaPlaces
+            placeholder='PLZ, Stadt, Straße und Hausnummer'
+            className={classes.textField}
+            options={{
+              appId: 'my-app-id',
+        		  apiKey: 'sharing-is-caring',
+              style: false,
+              language: 'de',
+              countries: ['de'],
+              type: 'address'
+              // Other options from https://community.algolia.com/places/documentation.html#options
+            }}
+          />
+ 
       <footer className="App-footer">coderwurst 2019</footer>
     </div>
   );
