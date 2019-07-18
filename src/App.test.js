@@ -16,3 +16,5 @@ import { exportAllDeclaration } from '@babel/types';
     const { queryByLabelText } = render(<App/>)
     expect(queryByLabelText('PLZ, Stadt, Straße und Hausnummer')).toBeTruthy()
   });
+
+  // TODO: check all fields render
