@@ -18,31 +18,16 @@ html {
   color: white;
 }
 
+h1 {
+  margin-bottom: 36px;
+}
+
 .content {
   flex: 1 0 auto;
 }
 
 .content input {
   min-width: 512px;
-}
-
-.doesNotBelong {
-  font-family: 'Roboto';
-  font-size: 16px;
-  height: 56px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
-  border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  width: 512px;
-  height: 32px;
-  padding-left: 0px;
-}
-
-.doesNotBelong:focus {
-  border-bottom: 1px solid #e20074;
 }
 
 .ap-input-icon svg {
@@ -56,8 +41,47 @@ html {
   visibility: hidden;
 }
 
-h1 {
-  margin-bottom: 36px;
+.inputGroup {
+  position: relative;
+  min-height: 56px;
+  align-self: center;
+}
+
+.inputLabel {
+  display: flex;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 200;
+  background: transparent;
+  color: rgba(0,0,0,0.6);
+  margin: 0px auto;
+  cursor: text;
+  transition: all .15s ease-in-out;
+  pointer-events: none;
+  top: 12px;
+  left: 12px;
+  text-size-adjust: none;
+  padding: 0 4px;
+  padding-bottom: 2px;
+  transition: font-size 200ms, top 200ms;
+}
+
+.inputField {
+  font-family: 'Roboto';
+  font-size: 16px;
+  width: 512px;
+  height: 32px;
+  position: relative;
+  margin: 0;
+  display: block;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  box-sizing: border-box;
+}
+
+.inputField:focus {
+  border-bottom: 1px solid #e20074;
 }
 
 .searchParams {
@@ -77,14 +101,7 @@ p {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 24px;
-}
-
-.footer {
-  background-color: #262626;
-  color: #ffffff;
-  min-height: 10vh;
-  display: flex;
-  flex-shrink: 0;
+  line-height: 21px;
 }
 
 .sendButton {
@@ -95,4 +112,12 @@ p {
   border-radius: 5px;
   margin-top: 36px;
   margin-bottom: 90px;
+}
+
+.footer {
+  background-color: #262626;
+  color: #ffffff;
+  min-height: 10vh;
+  display: flex;
+  flex-shrink: 0;
 }

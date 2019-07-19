@@ -37,7 +37,6 @@ class App extends React.Component {
       }
   }
 
-  // TODO: styling
   render() {           
     return (
         <div className="App">
@@ -46,33 +45,36 @@ class App extends React.Component {
             <header className="App-header">
             </header>
             <h1>Verfügbarkeit prüfen</h1>
-            <p>Bitte gib deine Adresse ein. Dann prüfen wir direkt, ob wir dir MagentaEINS Pure anbieten können.</p>
+            <p>Bitte gib deine Adresse ein. Dann prüfen wir direkt, ob wir dir das tolle neue Produkt anbieten können.</p>
           
           <form>
-            <AlgoliaPlaces
-              name='addressInput'
-              placeholder='Straße, Stadt oder PLZ suchen'
-              options={{
-                appId: 'my-app-id',
-        		    apiKey: 'sharing-is-caring',
-                language: 'de',
-                countries: ['de'],
-                type: 'address'
-                // Other options from https://community.algolia.com/places/documentation.html#options
-              }}
-              className='doesNotBelong'
-              onChange={ (result) => 
-              this.handleChange(result.suggestion) }
+            <div className='MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal'>
+            <label className="inputLabel" htmlFor='addressInput'>Straße, Stadt oder PLZ</label>
+              <AlgoliaPlaces
+                name='addressInput'
+                autoFocus={true}
+                placeholder=''
+                options={{
+                  appId: 'my-app-id',
+        		      apiKey: 'sharing-is-caring',
+                  language: 'de',
+                  countries: ['de'],
+                  type: 'address'
+                  // Other options from https://community.algolia.com/places/documentation.html#options
+                }}
+                className='inputField'
+                onChange={ (result) => 
+                this.handleChange(result.suggestion) }
               />
-              <TextField
-                id="Hausnummer"
-                label="Hausnummer"
-                value={ this.state.streetNumber }
-                margin="normal"
-                onChange={ (event) => 
-                  this.streetNumberChange(event) }
-                />
-              
+            <TextField
+              id="Hausnummer"
+              label="Hausnummer"
+              value={ this.state.streetNumber }
+              margin="normal"
+              onChange={ (event) => 
+                this.streetNumberChange(event) }
+              />
+            </div>  
               <p className="searchParamsTitle">Adresse zu prüfen</p>
               <p className="searchParams">{ this.state.addressOne } { this.state.streetNumber }</p>
               <p className="searchParams">{ this.state.addressTwo }</p>
