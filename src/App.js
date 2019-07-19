@@ -11,10 +11,12 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        addressOne: '',
-        addressTwo: ''
+        addressOne: 'Bitte suchen...',
+        addressTwo: '',
+        streetNumber: ''
       }
     this.handleChange = this.handleChange.bind(this)
+    this.streetNumberChange = this.streetNumberChange.bind(this)
   }
 
   handleChange = suggestion => {
@@ -27,6 +29,14 @@ class App extends React.Component {
     }
   }
 
+  streetNumberChange = event => {
+    if(event.target.value) {  
+      this.setState({
+            streetNumber: event.target.value
+        });
+      }
+  }
+
   // TODO: styling
   render() {           
     return (
@@ -35,15 +45,13 @@ class App extends React.Component {
           <div className="content">
             <header className="App-header">
             </header>
-            <h1>Ut tristique et</h1>
-            <p>Risus quis varius quam quisque id. Pretium fusce id velit ut tortor. Morbi tincidunt ornare massa.</p>
+            <h1>Verfügbarkeit prüfen</h1>
+            <p>Bitte gib deine Adresse ein. Dann prüfen wir direkt, ob wir dir MagentaEINS Pure anbieten können.</p>
           
           <form>
             <AlgoliaPlaces
-              
               name='addressInput'
-              placeholder='PLZ, Stadt, Straße und Hausnummer'
-              // className={ classes.textField }
+              placeholder='Straße, Stadt oder PLZ suchen'
               options={{
                 appId: 'my-app-id',
         		    apiKey: 'sharing-is-caring',
@@ -52,37 +60,24 @@ class App extends React.Component {
                 type: 'address'
                 // Other options from https://community.algolia.com/places/documentation.html#options
               }}
+              className='doesNotBelong'
               onChange={ (result) => 
               this.handleChange(result.suggestion) }
               />
-              <div>
-                <TextField
-                id="filled-read-only-street-and-number"
-                label="Straße und Hausnummer"
-                value={ this.state.addressOne }
-                // className={ classes.textField }
+              <TextField
+                id="Hausnummer"
+                label="Hausnummer"
+                value={ this.state.streetNumber }
                 margin="normal"
-                InputProps={{
-                  readOnly: true,
-                }}
-                variant="filled"
+                onChange={ (event) => 
+                  this.streetNumberChange(event) }
                 />
-              </div>
-              <div>
-                <TextField
-                id="filled-read-only-city-and-postcode"
-                label="Ort und PLZ"
-                value={ this.state.addressTwo }
-                // className={ classes.textField }
-                margin="normal"
-                InputProps={{
-                  readOnly: true,
-                }}
-                variant="filled"
-                />
-              </div>
+              
+              <p className="searchParamsTitle">Adresse zu prüfen</p>
+              <p className="searchParams">{ this.state.addressOne } { this.state.streetNumber }</p>
+              <p className="searchParams">{ this.state.addressTwo }</p>
             </form> 
-            <button>Augue lacus</button>
+            <button className="sendButton">Adresse prüfen</button>
           </div>
           <footer className="footer"/>
         </div>
